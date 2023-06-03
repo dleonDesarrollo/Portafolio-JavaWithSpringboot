@@ -61,3 +61,5 @@ algunas implementaciones al sistema, para garantizar el apropiado funcionamiento
 - Java 15
 - Tomcat 9
 - MySQL
+- SpringBoot
+- DataTables
