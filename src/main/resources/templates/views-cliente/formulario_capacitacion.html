@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/head.html :: headFragment">
+        <title id="tituloPagina">PREDER | Solicitar Capacitación</title>
+    </head>
+    <body>
+        <button class="hamburger">
+            <span class="material-symbols-outlined menu-icon" id="menu-icon">menu</span>
+            <span class="material-symbols-outlined close-icon" id="close-icon">close</span>
+        </button>
+
+        <nav th:replace="fragments/navbar_cliente.html :: navbar"></nav>
+
+        <main class="principal">
+            <h1>Crear nueva capacitación</h1>
+            <h2>Complete esta información para solicitar una capacitación.</h2>
+
+            <form method="post"  class="form__container" id="capa_form" th:object="${capacitacion}">
+
+                <div class="form__main">
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input readonly th:value="${customer.str}" class="input__text" type="text" name="customerStr" id="crut" onfocusout="validateRut()">
+                        <label class="input__label">Rut Cliente:</label>
+                    </div>
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="text" id="clugar" name="Lugar" onfocusout="validateLugar()" th:field="*{place}">
+                        <label class="input__label">Lugar:</label>
+                    </div>
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <select class="input__text" id="cdia" th:field="*{day}">
+                            <option value="Lunes">Lunes</option>
+                            <option value="Martes">Martes</option>
+                            <option value="Miércoles">Miércoles</option>
+                            <option value="Jueves">Jueves</option>
+                            <option value="Viernes">Viernes</option>
+                            <option value="Sabado">Sabado</option>
+                            <option value="Domingo">Domingo</option>
+                        </select>
+                        <label class="input__label">Dia:</label>
+                    </div>
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="time" id="chora" name="Hora" onfocusout="validateHora()" th:field="*{time}">
+                        <label class="input__label">Hora:</label>
+                    </div>
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="text" id="cduracion" name="Duración"
+                               onfocusout="validateDuracion()" th:field="*{duration}">
+                        <label class="input__label">Duración (min):</label>
+                    </div>
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="text" id="ccasistentes" name="Cantidad Asistentes"
+                               onfocusout="validateCantAsit()" th:field="*{numberOfAttendants}">
+                        <label class="input__label">Cantidad de asistentes:</label>
+                    </div>
+
+                </div>
+
+
+                <div class="button__container">
+                    <button type="reset" class="btn btn-out">Reestablecer</button>
+                    <button type="submit" class="btn btn-ok">Solicitar</button>
+                </div>
+
+            </form>
+        </main>
+
+        <script th:src="@{/js/script.js}"></script>
+        <script th:src="@{/js/validaFormCapacitacion.js}"></script>
+    </body>
+</html>

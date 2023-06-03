@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/head.html :: headFragment">
+        <title id="tituloPagina">PREDER | Registrar Profesional</title>
+    </head>
+
+    <body>
+
+        <button class="hamburger">
+            <span class="material-symbols-outlined menu-icon" id="menu-icon">menu</span>
+            <span class="material-symbols-outlined close-icon" id="close-icon">close</span>
+        </button>
+
+        <nav th:replace="fragments/navbar_administrativo.html :: navbar"></nav>
+
+        <main class="principal">
+            <h1>Registrar un nuevo Profesional</h1>
+            <h2>Ingrese la información para registrar un nuevo profesional al sistema</h2>
+
+            <form method="post"  class="form__container" id="profesional_form" th:object="${profesional}">
+
+                <div class="form__main">
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="text" name="Nombre Usuario" id="nombreUsuario"
+                               onfocusout="valUserName()" th:field="*{user.username}">
+                        <label class="input__label">Nombre de usuario:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="password" name="Contraseña" id="contraseña"
+                               onfocusout="valUserPass()" th:field="*{user.password}" >
+                        <label class="input__label">Contraseña:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="password" name="Confirme Contraseña" id="confirmeContraseña"
+                        onfocusout="valUserConfirmedPass()">
+                        <label class="input__label">Confirme Contraseña:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="text" name="Nombre Completo" id="nombreComleto"
+                               onfocusout="valUserCompletedName()" th:field="*{user.name}">
+                        <label class="input__label">Nombre Completo:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="date" name="Fecha Nacimiento" id="fecha"
+                               onfocusout="valUserDate()" th:field="*{user.birthday}">
+                        <label  class="input__label">Fecha Nacimiento:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="text" name="Run" id="run" th:field="*{user.dni}"
+                        onfocusout="valUserNumberID()">
+                        <label  class="input__label">Run:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="text" name="tiulo" id="tiulo"  th:field="*{degree}"
+                        onfocusout="valProfDegree()">
+                        <label class="input__label">Título:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="date" name="fIngreso" id="fIngreso"  th:field="*{entryDate}"
+                        onfocusout="valProfEntryDate()">
+                        <label class="input__label">Fecha de Ingreso:</label>
+                    </div>
+
+
+                </div>
+
+                <div class="button__container">
+                    <button type="reset" class="btn btn-out">Reestablecer</button>
+                    <button type="submit" class="btn btn-ok">Registrar</button>
+                </div>
+
+            </form>
+        </main>
+
+        <script th:src="@{/js/script.js}"></script>
+        <script th:src="@{/js/validaFormProfesional.js}"></script>
+    </body>
+
+
+
+
+
+
+
+</html>

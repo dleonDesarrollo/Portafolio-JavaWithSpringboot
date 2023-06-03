@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/head.html :: headFragment">
+        <title id="tituloPagina">PREDER | Asignar Visita</title>
+    </head>
+    <body>
+
+        <button class="hamburger">
+            <span class="material-symbols-outlined menu-icon" id="menu-icon">menu</span>
+            <span class="material-symbols-outlined close-icon" id="close-icon">close</span>
+        </button>
+
+        <nav th:replace="fragments/navbar_profesional.html :: navbar"></nav>
+
+        <main class="principal">
+            <h1>Clientes - Asignar Visita</h1>
+            <h2>Utilice la lista de clientes para asignar (<span
+                    class="material-symbols-outlined table__icon">add_circle</span>) una nueva visita.</h2>
+
+            <table id="users" class="main__table responsive nowrap" width="100%">
+                <thead>
+                    <tr>
+                        <th>Id_cliente</th>
+                        <th>Rut</th>
+                        <th>Nombres</th>
+                        <th>Direccion</th>
+                        <th>Comuna</th>
+                        <th>Agregar Visita</th>
+
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="cliente : ${listarClientes}">
+                        <td th:text="${cliente.customerId}"></td>
+                        <td th:text="${cliente.str}"></td>
+                        <td th:text="${cliente.user.name}"></td>
+                        <td th:text="${cliente.address}"></td>
+                        <td th:text="${cliente.district}"></td>
+                        <td>
+                            <a th:href="@{/visita/profesional/nuevo/{idCliente}(idCliente=${cliente.customerId})}"><span
+                                    class="material-symbols-outlined table__icon">add_circle</span></a>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </main>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript"
+                src="https://cdn.datatables.net/v/dt/dt-1.12.1/r-2.3.0/sl-1.4.0/datatables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#users').DataTable({
+
+
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                        }
+                    }
+                );
+            });
+        </script>
+        <script th:src="@{/js/script.js}"></script>
+    </body>
+</html>

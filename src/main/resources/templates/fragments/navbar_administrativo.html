@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+
+    <nav class="navbar" th:fragment="navbar">
+        <div class="popup" id="popup">
+            <div class="popup__top">
+                <h1 class="popup__titulo" id="popup__titulo"></h1>
+                <span class="material-symbols-outlined popup__close" onclick="closePopup()">close</span>
+            </div>
+            <h2 class="popup__text" id="popup__text"></h2>
+        </div>
+        <div class="navbar__top">
+            <img th:src="@{/img/logoPREDER666.png}" alt="PREDER Logo" class="logo__img">
+            <h2 class="logo__title">PREDER</h2>
+        </div>
+
+        <div class="navbar__menu">
+            <ul>
+
+                <li>
+                    <a th:classappend="${#httpServletRequest.getRequestURI().contains('/resumen') ? 'active' : ''}"
+                       class="navbar__link"
+                       th:href="@{/resumen/administrativo}">
+                        <span class="material-symbols-outlined nav-icon">account_box</span>
+                        <p class="navbar__text">Resumen</p>
+                        <span class="navbar__tooltip">Resumen</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:classappend="${#httpServletRequest.getRequestURI().contains('/usuario') ? 'active' : ''}"
+                       class="navbar__link" th:href="@{/usuario/administrativo/listar}">
+                        <span class="material-symbols-outlined nav-icon">group</span>
+                        <p class="navbar__text">Usuarios</p>
+                        <span class="navbar__tooltip">Usuarios</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:classappend="${#httpServletRequest.getRequestURI().contains('/pago') ? 'active' : ''}"
+                       class="navbar__link" th:href="@{/pago/administrativo/listar/}">
+                        <span class="material-symbols-outlined nav-icon">payments</span>
+                        <p class="navbar__text">Pagos</p>
+                        <span class="navbar__tooltip">Pagos</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a th:classappend="${#httpServletRequest.getRequestURI().contains('/revision') ? 'active' : ''}"
+                       class="navbar__link"
+                       th:href="@{/revision/administrativo/listar}">
+                        <span class="material-symbols-outlined nav-icon">checklist</span>
+                        <p class="navbar__text">Revisiones</p>
+                        <span class="navbar__tooltip">Revisiones</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="navbar__footer">
+            <img class="perfil__foto" th:src="@{/img/preder_profile.jpg}" alt="Foto de Perfil">
+
+            <div class="perfil__info">
+                <p class="perfil__usuario-nombre" sec:authentication="name">Juanito Perez</p>
+                <p class="perfil__usuario-perfil">Perfil Administrativo</p>
+            </div>
+
+            <form th:action="@{/logout}" method="post">
+                <button class="perfil__logout" type="submit">
+                    <span class="material-symbols-outlined">logout</span>
+                </button>
+            </form>
+        </div>
+    </nav>
+

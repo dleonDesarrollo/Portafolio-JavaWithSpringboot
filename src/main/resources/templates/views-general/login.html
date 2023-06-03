@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head th:include="fragments/head.html :: headFragment">
+        <title id="tituloPagina">PREDER | Iniciar Sesión</title>
+    </head>
+
+    <body class="center-contents">
+        <div class="login__container">
+            <h2 class="logo__title txt-c">PREDER</h2>
+            <h1 class="mt-05">Bienvenido</h1>
+            <h3>Para ingresar al sistema debe iniciar sesión.</h3>
+
+            <form th:action="@{/login}" method="post" class="mt-1">
+
+                <div class="input__box">
+                    <span class="input__help"></span>
+                    <input class="input__text" type="text" name="username">
+                    <label class="input__label">Nombre de usuario:</label>
+                </div>
+
+                <div class="input__box">
+                    <span class="input__help"></span>
+                    <input class="input__text" type="password" name="password">
+                    <label class="input__label">Contraseña :</label>
+                </div>
+
+                <div class="button__container-center">
+
+                    <button type="submit" class="btn btn-ok">Iniciar Sesión </button>
+                </div>
+
+
+
+            </form>
+            <div class="login__help" th:if="${param.error}">
+                <p>Nombre de usuario y/o contraseña no válidos.</p>
+            </div>
+            <div class="login__help" th:if="${param.logout}">
+                <p>Has cerrado sesión.</p>
+            </div>
+
+
+
+        </div>
+        <script th:src="@{/js/script.js}"></script>
+    </body>
+
+</html>

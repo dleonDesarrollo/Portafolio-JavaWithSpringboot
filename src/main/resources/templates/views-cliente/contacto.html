@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head th:include="fragments/head.html :: headFragment">
+        <title id="tituloPagina">PREDER | Contacto</title>
+    </head>
+
+    <body>
+
+        <button class="hamburger">
+            <span class="material-symbols-outlined menu-icon" id="menu-icon">menu</span>
+            <span class="material-symbols-outlined close-icon" id="close-icon">close</span>
+        </button>
+
+        <nav th:replace="fragments/navbar_cliente.html :: navbar"></nav>
+
+        <main class="principal">
+            <h1>Formulario de Contacto</h1>
+            <h2>Complete los siguientes datos, nos contactaremos a la brevedad.</h2>
+
+            <form class="form__container" method="post" th:object="${contacto}">
+
+                <div class="form__main">
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="text" th:field="*{metodoContacto}" >
+                        <label class="input__label">Metodo de contacto:</label>
+                    </div>
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="text" th:field="*{areaContacto}" onfocusout="valContArea()">
+                        <label class="input__label">Area correspondiente:</label>
+                    </div>
+
+
+                </div>
+                <div class="input__box">
+                    <span class="input__help"></span>
+                    <textarea class="input__text input__area" th:field="*{razonContacto}" onfocusout="valContReason()"></textarea>
+                    <label class="input__label">Razon de contacto:</label>
+                </div>
+
+                <div class="button__container">
+                    <button class="btn btn-out">Reestablecer</button>
+                    <button type="submit" class="btn btn-ok">Solicitar Contacto</button>
+                </div>
+
+            </form>
+        </main>
+
+        <script th:src="@{/js/script.js}"></script>
+        <script th:src="@{/js/validaFormContacto.js}"></script>
+
+    </body>
+</html>

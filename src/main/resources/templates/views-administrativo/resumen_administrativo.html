@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head th:include="fragments/head.html :: headFragment">
+        <title id="tituloPagina">PREDER | Resumen</title>
+    </head>
+
+    <body>
+
+        <button class="hamburger">
+            <span class="material-symbols-outlined menu-icon" id="menu-icon">menu</span>
+            <span class="material-symbols-outlined close-icon" id="close-icon">close</span>
+        </button>
+
+        <nav th:replace="fragments/navbar_administrativo.html :: navbar"></nav>
+
+        <main class="principal blur">
+            <h1>Bienvenido(a), <span th:text="${usuarioNombre}" class="txt-bold"></span></h1>
+            <h2 th:text="${'Resumen de actividades y solicitudes a dia ' + #dates.format(#dates.createNow(), 'dd/MM/yyyy, HH:mm') +' hrs.'}"></h2>
+
+            <div class="box__main">
+                <div class="widget__container">
+                    <div class="widget__principal">
+                        <h1 th:text="${cantidadUser}" class="widget__title">99</h1>
+                        <h2 th:if="${cantidadUser == 1}" class="widget__info">Usuario registrado</h2>
+                        <h2 th:if="${cantidadUser != 1}" class="widget__info">Usuarios registrados</h2>
+                    </div>
+                    <p class="widget__detalles">Sin Implementación</p>
+                    <span class="material-symbols-outlined widget__icon">supervisor_account</span>
+                </div>
+
+                <div class="widget__container">
+                    <div class="widget__principal">
+                        <h1 th:text="${cantidadSolicitudes}" class="widget__title">3</h1>
+                        <h2 th:if="${cantidadSolicitudes == 1}" class="widget__info">Solicitud de Contacto</h2>
+                        <h2 th:if="${cantidadSolicitudes != 1}" class="widget__info">Solicitudes de Contacto</h2>
+                    </div>
+                    <p class="widget__detalles">Sin Implementación</p>
+                    <span class="material-symbols-outlined widget__icon">phone_in_talk</span>
+
+                </div>
+                <div class="widget__container">
+                    <div class="widget__principal">
+                        <h1 th:text="${cantidadPagos}" class="widget__title">3</h1>
+                        <h2 th:if="${cantidadPagos == 1}" class="widget__info">Pago reportado</h2>
+                        <h2 th:if="${cantidadPagos != 1}" class="widget__info">Pagos reportados</h2>
+                    </div>
+                    <p class="widget__detalles">Sin Implementación</p>
+                    <span class="material-symbols-outlined widget__icon">request_quote</span>
+
+                </div>
+                <div class="widget__container">
+                    <div class="widget__principal">
+                        <h1 th:text="${cantidadRevisiones}" class="widget__title">2</h1>
+                        <h2 th:if="${cantidadRevisiones == 1}" class="widget__info">Revision Asignada</h2>
+                        <h2 th:if="${cantidadRevisiones != 1}" class="widget__info">Revisiones Asignadas</h2>
+                    </div>
+
+                    <p class="widget__detalles">Sin Implementación</p>
+                    <span class="material-symbols-outlined widget__icon">rate_review</span>
+                </div>
+            </div>
+
+        </main>
+
+        <script th:src="@{/js/script.js}"></script>
+    </body>
+
+</html>

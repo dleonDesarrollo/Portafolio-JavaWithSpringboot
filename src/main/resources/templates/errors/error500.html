@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+  <head th:include="fragments/head.html :: headFragment">
+    <title id="tituloPagina">Error 403 | Sin acceso</title>
+  </head>
+
+<body class="center-contents">
+  <div class="error__container">
+
+    <img class="error__img" th:src="@{/img/server-not.png}" alt="Error 500">
+    <div class="error__info">
+      <h1 class="error__title">ERROR 500</h1>
+      <h2 class="error__details">El servidor encontró una condición inesperada que le impide completar la petición.</h2>
+      <a th:href="@{/}" class="btn btn-l btn-hero mt-2">Volver al Inicio</a>
+    </div>
+  </div>
+</body>
+
+</html>

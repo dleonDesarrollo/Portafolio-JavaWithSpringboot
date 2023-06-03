@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/head.html :: headFragment">
+        <title id="tituloPagina">PREDER | Editar Cliente</title>
+    </head>
+
+    <body>
+
+        <button class="hamburger">
+            <span class="material-symbols-outlined menu-icon" id="menu-icon">menu</span>
+            <span class="material-symbols-outlined close-icon" id="close-icon">close</span>
+        </button>
+
+        <nav th:replace="fragments/navbar_administrativo.html :: navbar"></nav>
+
+        <main class="principal">
+            <h1>Editar Cliente</h1>
+            <h2>Complete la información para editar el cliente.</h2>
+
+            <form method="post" th:action="@{/customer/administrativo/editar}" class="form__container" id="cliente_form"
+                  th:object="${cliente}">
+
+                <div class="form__main">
+                    <input hidden th:value="${theCustomer.user.userId}" class="input__text" type="text"
+                           name="user.userId"
+                           id="user.userId" >
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input th:value="${theCustomer.user.username}" class="input__text" type="text"
+                               name="user.username"
+                               id="user.username" onfocusout="valUserName()">
+                        <label class="input__label">Nombre de usuario:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input value="" class="input__text" type="password" name="user.password"
+                               id="user.password" onfocusout="valUserPass()">
+                        <label class="input__label">Contraseña:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input value="" class="input__text" type="password"
+                               name="Confirme Contraseña" id="confirmeContraseña" onfocusout="valUserConfirmedPass()">
+                        <label class="input__label">Confirme Contraseña:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input th:value="${theCustomer.user.name}" class="input__text" type="text" name="user.name"
+                               id="user.name" onfocusout="valUserCompletedName()">
+                        <label class="input__label">Nombre Completo:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input th:value="${theCustomer.user.birthday}" class="input__text" type="date"
+                               name="user.birthday"
+                               id="user.birthday" onfocusout="valUserDate()">
+                        <label class="input__label">Fecha Nacimiento:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input th:value="${theCustomer.user.dni}" class="input__text" type="text" name="user.dni"
+                               id="user.dni" onfocusout="valUserNumberID()">
+                        <label class="input__label">Run:</label>
+                    </div>
+
+                    <input hidden th:value="${theCustomer.customerId}" class="input__text" type="text" name="customerId"
+                           id="customerId">
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input th:value="${theCustomer.str}" class="input__text" type="text" name="str" id="str"
+                        onfocusout="valCliNumberId()">
+                        <label class="input__label">Rut Cliente:</label>
+                    </div>
+
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input th:value="${theCustomer.phoneNumber}" class="input__text" type="text" name="phoneNumber"
+                               id="phoneNumber" onfocusout="valCliPhone()">
+                        <label class="input__label">Telefono:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input th:value="${theCustomer.pfa}" class="input__text" type="text" name="pfa" id="pfa"
+                        onfocusout="valCliPfa()">
+                        <label class="input__label">AFP:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <select th:selected="${theCustomer.healthSystem}" class="input__text" name="healthSystem"
+                                id="healthSystem" onfocusout="valCliHealth()">
+                            <option value="FONASA">FONASA</option>
+                            <option value="ISAPRE">Isapre</option>
+
+                        </select>
+                        <label class="input__label">Sistema Salud:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input th:value="${theCustomer.address}" class="input__text" type="text" name="address"
+                               id="address" onfocusout="valCliAddress()">
+                        <label class="input__label">Direccion:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input th:value="${theCustomer.district}" class="input__text" type="text" name="district"
+                               id="district" onfocusout="valCliDistrict()">
+                        <label class="input__label">Comuna:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input th:value="${theCustomer.age}" class="input__text" type="text" name="age" id="age"
+                        onfocusout="valCliAge()">
+                        <label class="input__label">Edad:</label>
+                    </div>
+
+                </div>
+
+                <div class="button__container">
+                    <button type="reset" class="btn btn-out">Reestablecer</button>
+                    <button type="submit" class="btn btn-ok">Confirmar Edición</button>
+                </div>
+
+            </form>
+        </main>
+
+        <script th:src="@{/js/script.js}"></script>
+        <script th:src="@{/js/validaFormClienteEdit.js}"></script>
+    </body>
+
+
+</html>

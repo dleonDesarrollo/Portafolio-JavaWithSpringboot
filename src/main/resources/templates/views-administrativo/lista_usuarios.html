@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/head.html :: headFragment">
+        <title id="tituloPagina">PREDER | Usuarios</title>
+    </head>
+    <body>
+
+        <button class="hamburger">
+            <span class="material-symbols-outlined menu-icon" id="menu-icon">menu</span>
+            <span class="material-symbols-outlined close-icon" id="close-icon">close</span>
+        </button>
+
+        <nav th:replace="fragments/navbar_administrativo.html :: navbar"></nav>
+
+        <main class="principal">
+            <h1>Usuarios Registrados</h1>
+            <h2>Lista de usuarios registrados en sistema.</h2>
+
+            <table id="users" class="main__table responsive nowrap" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>RUN</th>
+                        <th>Rol</th>
+                        <th>Editar</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="usuario : ${listaUsuarios}">
+                        <td th:text="${usuario.userId}"></td>
+                        <td th:text="${usuario.name}"></td>
+                        <td th:text="${usuario.dni}"></td>
+                        <td th:text="${usuario.getFirstRole()}"></td>
+                        <td>
+                            <a th:href="@{/{rol}/administrativo/editar/{userId}(rol=${usuario.getFormattedRole()}, userId=${usuario.userId})}"><span class="material-symbols-outlined table__icon">edit_note</span></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="button__container-toleft mt-3">
+                <a th:href="@{/customer/administrativo/nuevo}" class="btn btn-ok btn-s"><span class="material-symbols-outlined">person_add</span>Cliente</a>
+                <a th:href="@{/professional/administrativo/nuevo}" class="btn btn-ok btn-s"><span class="material-symbols-outlined">person_add</span>Profesional</a>
+                <a th:href="@{/manager/administrativo/nuevo}" class="btn btn-ok btn-s"><span class="material-symbols-outlined">person_add</span>Administrativo</a>
+            </div>
+
+
+        </main>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript"
+                src="https://cdn.datatables.net/v/dt/dt-1.12.1/r-2.3.0/sl-1.4.0/datatables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#users').DataTable({
+
+
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                        }
+                    }
+                );
+            });
+        </script>
+        <script th:src="@{/js/script.js}"></script>
+    </body>
+</html>
+
+<!--
+https://www.figma.com/file/kkcGpqhXAo8VSf2DjGlAUb/PanelDeUsuarioGrupal1
+
+-->

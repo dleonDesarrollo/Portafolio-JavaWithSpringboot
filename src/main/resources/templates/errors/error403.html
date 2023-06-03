@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+  <head th:include="fragments/head.html :: headFragment">
+    <title id="tituloPagina">Error 403 | Sin acceso</title>
+  </head>
+
+<body class="center-contents">
+  <div class="error__container">
+
+    <img class="error__img" th:src="@{/img/not-enter2.svg}" alt="Error 403">
+    <div class="error__info">
+      <h1 class="error__title">ERROR 403</h1>
+      <h2 class="error__details">Usted no esta autorizado para ingresar a esta sección.</h2>
+      <a th:href="@{/}" class="btn btn-l btn-hero mt-2">Volver al Inicio</a>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/head.html :: headFragment">
+        <title id="tituloPagina">PREDER | Pagos</title>
+    </head>
+    <body>
+
+        <button class="hamburger">
+            <span class="material-symbols-outlined menu-icon" id="menu-icon">menu</span>
+            <span class="material-symbols-outlined close-icon" id="close-icon">close</span>
+        </button>
+
+        <nav th:replace="fragments/navbar_administrativo.html :: navbar"></nav>
+
+        <main class="principal">
+            <h1>Pagos Registrados</h1>
+            <h2>Lista de pagos registrados en sistema.</h2>
+
+            <table id="users" class="main__table responsive nowrap" width="100%">
+                <thead>
+                    <tr>
+
+                        <th>Cliente [ID]</th>
+                        <th>Monto</th>
+                        <th>Fecha de Pago</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="pago : ${listaPago}">
+
+                        <td><span th:text="${pago.customer.user.name}"></span> [<span th:text="${pago.customer.customerId}"></span>]</td>
+                        <td>$ <span th:text="${pago.amount}"></span></td>
+                        <td th:text="${pago.paymentDate}">11</td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="button__container mt-3">
+                <a th:href="@{/pago/administrativo/listarClientes}" class="btn btn-ok">
+                    <span class="material-symbols-outlined">monetization_on</span>
+                    Ingrese Nuevo Pago</a>
+            </div>
+
+
+        </main>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript"
+                src="https://cdn.datatables.net/v/dt/dt-1.12.1/r-2.3.0/sl-1.4.0/datatables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#users').DataTable({
+
+
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                        }
+                    }
+                );
+            });
+        </script>
+        <script th:src="@{/js/script.js}"></script>
+    </body>
+</html>
+

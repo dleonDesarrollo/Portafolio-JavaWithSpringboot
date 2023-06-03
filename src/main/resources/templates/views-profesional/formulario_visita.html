@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/head.html :: headFragment">
+        <title id="tituloPagina">PREDER | Formulario Visita</title>
+    </head>
+
+    <body>
+
+        <button class="hamburger">
+            <span class="material-symbols-outlined menu-icon" id="menu-icon">menu</span>
+            <span class="material-symbols-outlined close-icon" id="close-icon">close</span>
+        </button>
+
+        <nav th:replace="fragments/navbar_profesional.html :: navbar"></nav>
+
+        <main class="principal">
+            <h1>Ingresar una nueva Visita en Terreno</h1>
+            <h2>Registrar una visita para <span class="txt-wht" th:text="${cliente.user.name}"></span> <a
+                    th:href="@{/visita/profesional/listarClientes}" class="txt-small txt-sub txt-muted">(cambiar
+                cliente)</a></h2>
+
+            <form method="post" class="form__container" id="visita_form" th:object="${visita}"
+                  th:action="@{/visita/profesional/nuevo/{idCliente}(idCliente=${cliente.customerId})}">
+
+                <div class="form__main">
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="date" id="dia" name="dia" th:field="*{day}">
+                        <label class="input__label">Día:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="time" id="hora" name="hora" th:field="*{time}">
+                        <label class="input__label">Hora:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="text" id="lugar" name="lugar" onfocusout="validateLugar()"
+                               th:field="*{place}">
+                        <label class="input__label">Lugar:</label>
+                    </div>
+
+                    <div class="input__box">
+                        <span class="input__help"></span>
+                        <input class="input__text" type="text" id="comentario" name="comentario"
+                               onfocusout="validateComentario()" th:field="*{comment}">
+                        <label class="input__label">Comentario:</label>
+                    </div>
+                </div>
+
+                <div class="button__container">
+                    <button type="reset" class="btn btn-out">Reestablecer</button>
+                    <button type="submit" class="btn btn-ok">Agendar</button>
+                </div>
+
+            </form>
+        </main>
+
+        <script th:src="@{/js/script.js}"></script>
+        <script th:src="@{/js/validaFormVisita.js}"></script>
+    </body>
+
+</html>

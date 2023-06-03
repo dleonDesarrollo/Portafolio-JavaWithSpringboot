@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head th:include="fragments/head.html :: headFragment">
+        <title id="tituloPagina">PREDER | Resumen</title>
+    </head>
+
+    <body>
+
+        <button class="hamburger">
+            <span class="material-symbols-outlined menu-icon" id="menu-icon">menu</span>
+            <span class="material-symbols-outlined close-icon" id="close-icon">close</span>
+        </button>
+
+        <nav th:replace="fragments/navbar_cliente.html :: navbar"></nav>
+
+        <main class="principal blur">
+            <h1>Bienvenido(a), <span th:text="${usuarioNombre}" class="txt-bold"></span></h1>
+            <h2 th:text="${'Resumen de actividades y solicitudes a dia ' + #dates.format(#dates.createNow(), 'dd/MM/yyyy, HH:mm') +' hrs.'}"></h2>
+
+            <div class="box__main">
+                <div class="widget__container">
+                    <div class="widget__principal">
+                        <h1 th:text="${capasSolicitadas}" class="widget__title">99</h1>
+                        <h2 th:if="${capasSolicitadas == 1}" class="widget__info">Capacitación</br>solicitada</h2>
+                        <h2 th:if="${capasSolicitadas != 1}" class="widget__info">Capacitaciones solicitadas</h2>
+                    </div>
+                    <p class="widget__detalles">Sin Implementación</p>
+                    <span class="material-symbols-outlined widget__icon">
+          auto_stories
+          </span>
+                </div>
+                <div class="widget__container">
+                    <div class="widget__principal">
+                        <h1 th:text="${cantidadAccidentes}" class="widget__title">3</h1>
+                        <h2 th:if="${cantidadAccidentes == 1}" class="widget__info">Accidente Reportado</h2>
+                        <h2 th:if="${cantidadAccidentes != 1}" class="widget__info">Accidentes Reportados</h2>
+                    </div>
+                    <p class="widget__detalles">Sin Implementación</p>
+                    <span class="material-symbols-outlined widget__icon">health_and_safety</span>
+
+                </div>
+                <div class="widget__container">
+                    <div class="widget__principal">
+                        <h1 th:text="${visitasAsociadas}" class="widget__title">3</h1>
+                        <h2 th:if="${visitasAsociadas == 1}" class="widget__info">Visita agendada</h2>
+                        <h2 th:if="${visitasAsociadas != 1}" class="widget__info">Visitas agendadas</h2>
+                    </div>
+                    <p class="widget__detalles">Sin Implementación</p>
+                    <span class="material-symbols-outlined widget__icon">
+          share_location
+          </span>
+
+                </div>
+                <div class="widget__container">
+                    <div class="widget__principal">
+                        <h1 th:text="${pagosAsociados}" class="widget__title">2</h1>
+                        <h2 th:if="${pagosAsociados == 1}" class="widget__info">Pago Registrado</h2>
+                        <h2 th:if="${pagosAsociados != 1}" class="widget__info">Pagos Registrados</h2>
+                    </div>
+
+                    <p class="widget__detalles">Sin Implementación</p>
+                    <span class="material-symbols-outlined widget__icon">
+          payments
+          </span>
+                </div>
+            </div>
+
+
+        </main>
+
+        <script th:src="@{/js/script.js}"></script>
+    </body>
+
+</html>

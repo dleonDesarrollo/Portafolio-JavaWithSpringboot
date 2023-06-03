@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+
+    <nav class="navbar" th:fragment="navbar">
+        <div class="popup" id="popup">
+            <div class="popup__top">
+                <h1 class="popup__titulo" id="popup__titulo"></h1>
+                <span class="material-symbols-outlined popup__close" onclick="closePopup()">close</span>
+            </div>
+            <h2 class="popup__text" id="popup__text"></h2>
+        </div>
+        <div class="navbar__top">
+            <img th:src="@{/img/logoPREDER666.png}" alt="PREDER Logo" class="logo__img">
+            <h2 class="logo__title">PREDER</h2>
+        </div>
+
+        <div class="navbar__menu">
+            <ul>
+
+                <li>
+                    <a th:classappend="${#httpServletRequest.getRequestURI().contains('/resumen') ? 'active' : ''}"
+                       class="navbar__link" th:href="@{/resumen/cliente}">
+                        <span class="material-symbols-outlined nav-icon">account_box</span>
+                        <p class="navbar__text">Resumen</p>
+                        <span class="navbar__tooltip">Resumen</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:classappend="${#httpServletRequest.getRequestURI().contains('/contacto') ? 'active' : ''}"
+                       class="navbar__link" th:href="@{/contacto/cliente/contactar}">
+                        <span class="material-symbols-outlined nav-icon">contact_support</span>
+                        <p class="navbar__text">Contacto</p>
+                        <span class="navbar__tooltip">Contacto</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:classappend="${#httpServletRequest.getRequestURI().contains('/capacitacion/') ? 'active' : ''}"
+                       class="navbar__link" th:href="@{/capacitacion/cliente/listar}">
+                        <span class="material-symbols-outlined nav-icon">school</span>
+                        <p class="navbar__text">Capacitaciones</p>
+                        <span class="navbar__tooltip">Capacitaciones</span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="spanPopup('Sección sin implementar', 'Esta sección aun se encuentra sin implementar.')"
+                       class="navbar__link" href="#">
+                        <span class="material-symbols-outlined nav-icon">group</span>
+                        <p class="navbar__text">Asistentes</p>
+                        <span class="navbar__tooltip">Asistentes</span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="spanPopup('Sección sin implementar', 'Esta sección aun se encuentra sin implementar.')"
+                       class="navbar__link" href="#">
+                        <span class="material-symbols-outlined nav-icon">local_hospital</span>
+                        <p class="navbar__text">Accidentes</p>
+                        <span class="navbar__tooltip">Accidentes</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="navbar__footer">
+            <img class="perfil__foto" th:src="@{/img/preder_profile.jpg}" alt="Foto de Perfil">
+
+            <div class="perfil__info">
+                <p class="perfil__usuario-nombre" th:text="${usuarioNombre}">Juanito Perez</p>
+                <p class="perfil__usuario-perfil">Perfil Cliente</p>
+            </div>
+
+            <form th:action="@{/logout}" method="post">
+                <button class="perfil__logout" type="submit">
+                    <span class="material-symbols-outlined">logout</span>
+                </button>
+            </form>
+
+        </div>
+    </nav>
+

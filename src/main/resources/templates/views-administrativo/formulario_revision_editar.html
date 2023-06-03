@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/head.html :: headFragment">
+        <title id="tituloPagina">PREDER | Editar revisión</title>
+    </head>
+
+    <body>
+
+        <button class="hamburger">
+            <span class="material-symbols-outlined menu-icon" id="menu-icon">menu</span>
+            <span class="material-symbols-outlined close-icon" id="close-icon">close</span>
+        </button>
+
+        <nav th:replace="fragments/navbar_administrativo.html :: navbar"></nav>
+
+        <main class="principal">
+            <h1>Editar Revisión</h1>
+            <h2>Modificar revisión correspondiente a visita ID: <span class="txt-wht"
+                                                                      th:text="${revision.inspection.inspectionId}"></span>
+            </h2>
+
+            <form method="post"
+                  th:action="@{/revision/administrativo/editar/{idRevision}(idRevision=${revision.checklistId})}"
+                  class="form__container" id="form" th:object="${checkeo}">
+
+                <div class="form__main no-scroll">
+
+                    <input hidden th:value="${revision.checklistId}" class="input__text" type="text"
+                           name="checklistId" id="checklistId">
+
+                    <input hidden th:value="${revision.inspection.inspectionId}" class="input__text" type="text"
+                           name="inspection.inspectionId" id="inspection.inspectionId">
+
+                    <div class="input__box">
+
+                        <span class="input__help"></span>
+                        <select th:selected="${revision.checklistStatus.name()}" class="input__text" id="cdia"
+                                name="checklistStatus">
+                            <option th:each=" estado : ${estados}" th:text="${estado}">TEST</option>
+                        </select>
+                        <label class="input__label">Estado de revision:</label>
+                    </div>
+                </div>
+                <div class="input__box">
+                    <span class="input__help"></span>
+                    <textarea th:text="${revision.details}" class="input__text input__area" name="details"></textarea>
+                    <label class="input__label">Detalle:</label>
+                </div>
+
+                <div class="button__container">
+                    <button type="submit" class="btn btn-ok">Ingresar</button>
+                </div>
+
+            </form>
+        </main>
+
+        <script th:src="@{/js/script.js}"></script>
+        <script th:src="@{/js/validaciones.js}"></script>
+    </body>
+</html>
