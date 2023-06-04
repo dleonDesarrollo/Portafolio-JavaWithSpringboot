@@ -6,9 +6,6 @@
 - [Diego Saavedra](https://github.com/dleonDesarrollo),
 - [Cristóbal Pulgar](https://github.com/CristobalNPE).
 
-Módelo de Datos
-![image](https://github.com/dleonDesarrollo/PORTAFOLIO/assets/102374379/4e1ee574-94d6-42af-8596-a6c59378579a)
-
 ## Contexto
 
 Preder, Empresa de Asesorías en Prevención de Riesgos,
