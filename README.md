@@ -1,10 +1,7 @@
 # Sprint Final Módulo 6 [JAVA con Framework Sring Boot]
 
 #### Desarrollado por Los Huasos TECH:
-
-- [Natalia Ponce](https://github.com/Natalia1428),
 - [Diego Saavedra](https://github.com/dleonDesarrollo),
-- [Cristóbal Pulgar](https://github.com/CristobalNPE).
 
 ## Contexto
 
