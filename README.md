@@ -9,7 +9,7 @@ Preder, Empresa de Asesorías en Prevención de Riesgos,
 busca implementar una solución tecnológica que de respuesta
 a la necesidad de sistematizar y organizar eficientemente
 todos los procesos e información tanto internos, como de sus clientes.
-
+https://user-images.githubusercontent.com/60191320/184059256-c2f7e3cf-3c94-4de6-ad05-8121257dc4c0.png
 ## Solución
 
 Se ha desarrollado un sistema informático que cubre los procesos de negocio
