@@ -1,6 +1,6 @@
 # Sprint Final Módulo 6 [JAVA con Framework Spring Boot]
 
-#### Desarrollado por Los Huasos TECH:
+#### Desarrollador
 - [Diego Saavedra](https://github.com/dleonDesarrollo),
 
 ## Contexto
