@@ -52,7 +52,7 @@ algunas implementaciones al sistema, para garantizar el apropiado funcionamiento
 
 ## Herramientas
 
-- Java 15
+- Java 11
 - Tomcat 9
 - MySQL
 - SpringBoot
